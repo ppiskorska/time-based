@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-Based Image Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 2rem;
+            background-color: #f0f0f0;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Patrycja Piskorska</h1>
+    <h2>COP4813</h2>
+    <h3>Criminology</h3>
+    <p>Welcome to my webpage! This site shows a different image depending on the current time of day!</p>
+    
+    <img id="timeImage" src="" alt="Time of Day Image">
+
+    <script>
+        function updateImageBasedOnTime() {
+            const now = new Date();
+            const hour = now.getHours();
+            const imgElement = document.getElementById('timeImage');
+            
+            let imageUrl = '';
+            
+            if (hour >= 6 && hour < 12) {
+                imageUrl = 'https://unsplash.com/photos/trees-under-cloudy-sky-during-sunset--G3rw6Y02D0';  // Morning image
+            } else if (hour >= 12 && hour < 18) {
+                imageUrl = 'https://unsplash.com/photos/a-yellow-building-with-a-blue-door-and-windows-etll963cJTs'; // Afternoon image
+            } else {
+                imageUrl = 'https://unsplash.com/photos/mountains-with-trees-under-white-star-at-night-L95xDkSSuWw';      // Evening/Night image
+            }
+            
+            imgElement.src = imageUrl;
+        }
+
+        // Call function when the page loads
+        window.onload = updateImageBasedOnTime;
+    </script>
+</body>
+</html>
